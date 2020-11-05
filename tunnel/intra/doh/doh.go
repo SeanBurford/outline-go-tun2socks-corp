@@ -178,7 +178,7 @@ func NewTransport(rawurl string, addrs []string, dialer *net.Dialer, loader Cert
 		listener: listener,
 		dialer:   dialer,
 		ips:      ipmap.NewIPMap(dialer.Resolver),
-	        auth:     newClientAuthWrapper(loader),
+		auth:     newClientAuthWrapper(loader),
 	}
 	ips := t.ips.Get(t.hostname)
 	for _, addr := range addrs {
@@ -194,7 +194,7 @@ func NewTransport(rawurl string, addrs []string, dialer *net.Dialer, loader Cert
 		ForceAttemptHTTP2:     true,
 		TLSHandshakeTimeout:   10 * time.Second,
 		ResponseHeaderTimeout: 20 * time.Second, // Same value as Android DNS-over-TLS
-		TLSClientConfig:       &tls.Config{
+		TLSClientConfig: &tls.Config{
 			GetClientCertificate: t.auth.GetClientCertificate,
 		},
 	}

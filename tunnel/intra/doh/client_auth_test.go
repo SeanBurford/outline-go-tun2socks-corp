@@ -394,4 +394,3 @@ func TestNilLoader(t *testing.T) {
 		t.Error("Expected Sign() to fail")
 	}
 }
-
